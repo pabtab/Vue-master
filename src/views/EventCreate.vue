@@ -7,6 +7,7 @@
     </ul>
     <p>There are {{ catLength }}</p>
     <p>event by id {{ getEventById(2) }}</p>
+    <button @click="incrementCount">Increment count</button>
   </div>
 </template>
 
@@ -15,6 +16,11 @@
   import { mapState, mapGetters } from 'vuex';
 
   export default {
+    methods: {
+      incrementCount() {
+        this.$store.dispatch('updateCount', 1)
+      }
+    },
     computed: {
       catLength() {
         return this.$store.getters.catLength
